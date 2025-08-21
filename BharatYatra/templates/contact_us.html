@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="\static\contact.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
+    </script>
+</head>
+<div class="contact_data">
+    <div class="row">
+    <h1>CONTACT US</h1>
+    <p><i class="fa fa-phone"></i>+91 9422504356</p>
+    <p><i class="fa fa-envelope"></i>divu0179@gmail.com</p>
+    <pre >Travelling  is  the  best  theraphy. You will learn alot from travellling. 
+If you are stressed or feeling low </pre>
+<div id="element"></div>   
+</div>
+    <div class="row">
+        <h3>Message us if you have any query</h3>
+        {% if success %}
+        <p style="color: green;">Your message has been sent successfully!</p>
+        {% endif %}
+        <form action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+        <div><input type="text" name="name" placeholder="mention your name">
+            <span style="color: red;">{{ form.name.errors }}</span></div>
+        <div><input type="number" name="phone" placeholder="mention your mobile number">
+            <span style="color: red;">{{ form.name.errors }}</span></div>
+        <div><input type="email" name="email" placeholder="mention your email">
+            <span style="color: red;">{{ form.name.errors }}</span></div>
+        <div><textarea name="message" placeholder="mention your query"></textarea>
+            <span style="color: red;">{{ form.name.errors }}</span></div>
+        <div><input type="submit" value="send"></div>
+        </form>
+    </div>
+</div>
+<script>
+    var typed = new Typed('#element', {
+        
+        strings: ['bag pack karo, thode paise lo or nikal  jao khud ki khoj mai.'],
+        typespeed: 50,
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    h3 {
+        font-weight: bold;
+        font-size: 25px;
+        color: #281E5D;
+        text-align: center;
+        margin: 20px;
+    }
+    .photo_display {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        margin-left: 250px;
+        }
+    .image_display {
+        margin: 50px;
+        padding: 30px;
+    }
+    .image {
+        heigh: 400px;
+        width: 400px;
+        border-radius: 5px;
+        background-color: white;
+        border: 6px solid #ddd;
+        margin-bottom: 25px; 
+    }
+    p {
+        font: italic small-caps bold 20px Georgia, serif;
+        margin-left: 10px;
+    }
+</style>
+<h3>Nearby Places</h3>
+<div class="photo_display">
+
+    {% for place in nearby_places %}
+    <div class="image_display">
+        {% if place.image_url %}
+            <a href="{{ place.image_url }}"><img class="image" src="{{ place.image_url }}" alt="Place Image"></a>
+        {% else %}
+            <p>No image available.</p>
+        {% endif %}
+        <p>{{ place.name }}</p>
+    </div>
+{% empty %}
+    <p>No nearby places found.</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}

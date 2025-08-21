@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Login Header</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="robots" content="INDEX,FOLLOW">
+        <link rel="stylesheet" href="\static\login_header.css">
+    </head>
+    <body>
+        <div class="head">
+        <div class="row1"><img src="\static\logo.jpeg" alt="logo"></div>
+        <div class="row2">
+            <a href="{% url 'home' %}">HOME</a>
+            <a href="{% url 'post' %}">POST</a>
+            <a href="{% url 'social' %}">SOCIAL</a>
+            <a href="{% url 'contact' %}">CONTACT US</a>
+            <a href="{% url 'profile_view' %}">PROFILE</a>
+            <a href="{% url 'logout' %}">LOG OUT</a>
+        </div>
+        </div>
+    

@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color:rgb(1, 52, 7);
+    margin-left: 200px;
+}
+p {
+    margin: 10px;
+    margin-left: 200px;
+}
+h3 {
+    margin-left: 50px; 
+    color:rgb(1, 52, 7);
+    margin-bottom: 30px;
+}
+.row input[type='text'],
+.row input[type='number'],
+.row input[type='email'] {
+    width: 400px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+textarea {
+    width: 600px;
+    height: 100px;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+.row input[type='submit'] {
+    width: 100px;
+    height: 30px;
+    padding: 3px;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-left: 50px;
+    border: 3px solid;
+    border-radius: 5px;
+    background-color: #004c02;  
+}
+pre {
+    text-align: justify;
+    margin: 15px;
+    padding: 10px;
+    margin-left: 50px;
+    font: serif;
+}
+#element {
+    font-size: 20px;
+    font: Monospace;
+    color: rgb(239, 62, 62);
+    margin-left: 50px;
+}
+.contact_data {
+    display: flex;
+}
+.row {
+    flex: 50%;
+}

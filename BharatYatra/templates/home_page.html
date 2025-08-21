@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .search_container {
+            display: flex;
+        }
+        .search_bar {
+            height: 27px;
+            width: 400px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            margin-left: 600px; 
+        }
+        .search_bar input[type=text] {
+            padding: 6px;
+            width: 300px;
+            font-size: 17px;
+            border-radius: 3px;
+        }
+        .search_bar button {
+            border: None;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 17px;
+            cursor: pointer;
+            margin-right: 0;
+        }
+        .search_bar button:hover {
+            background: blue;
+        }
+        .p1 {
+            margin: 30px;
+            font-weight: 30px;
+            font-size: 65px;
+            color: red;
+            text-align: center;
+            font-family: timesince;
+            text-shadow: 2px 2px;
+        }
+        #element {
+            margin: 30px;
+            font-weight: 25px;
+            font-size: 50px;
+            color: #900000;
+            text-align: center;
+            font-family: timesince;
+            text-shadow: 2px 2px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
+    </script>
+</head>
+<body>
+    <p class="p1">Explore with us......</p>
+    <div id="element"></div> 
+<section>
+    <div class="search-container">
+    <div class="search_bar">
+        <form action="/home_page.html/">
+            <input type="text" placeholder="Search.... " name="search">
+            <button type="submit"><i class="fa fa-search" ></i></button>
+        </form>
+    </div>
+    </div>
+</section>
+<script>
+    const API_KEY = 'AlzaSyjcindTC8jO69hD_jto9xdMOMU1mkqQvKz'; 
+    var typed = new Typed('#element', {
+        strings: ['Where you want to go ?'],
+        typeSpeed: 50,    
+    });
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default submission
+        const city = document.querySelector('input[name="search"]').value.trim();
+        
+        if (!city) {
+            alert('Please enter a valid city name.');
+            return;
+        }
+        console.log('City input:', city); // Debugging log
+        fetch(`https://maps.gomaps.pro/maps/api/geocode/json?address=${city}&key=${API_KEY}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('API response:', data); // Debugging log
+                if (data.results.length > 0) {
+                    const lat = data.results[0].geometry.location.lat;
+                    const lng = data.results[0].geometry.location.lng;
+                    window.location.href = `/travel/?lat=${lat}&lng=${lng}`;
+                } else {
+                    alert('No results found for the entered city. Please try another one.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching geolocation:', error);
+                alert('Could not fetch location. Please try again later.');
+            });
+    });
+</script>
+</body>
+{% endblock %}

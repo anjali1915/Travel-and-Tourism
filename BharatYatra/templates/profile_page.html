@@ -1,0 +1,25 @@
+{% extends 'login_base.html' %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="\static\profile.css">
+</head>
+<div class="column">
+    <div class="row3">
+        <h3> <u><i>{{edit_profile.user.username}}</i></u></h3>
+        <img src="{{edit_profile.images_url}}" alt="profile_img">
+        <p>Contact: {{ edit_profile.contact_details }}</p>
+        <p>Trips Organized: {{ edit_profile.trips_organized }}</p>
+        <p>Places Visited: {{ edit_profile.places_visited }}</p>
+    </div>
+    <div class="row4">
+        <p>Bio: {{ edit_profile.bio }}</p>
+        <h2>Posts:</h2>
+        <ul>
+            {% for post in post %}
+            <li>{{ post.content }} ({{ post.posted_on }})</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'profile_edit' %}">Edit Profile</a>
+    </div>
+</div>
+{% endblock %}
